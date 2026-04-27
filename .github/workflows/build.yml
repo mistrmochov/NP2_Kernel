@@ -11,12 +11,12 @@ on:
         description: 'Kernel source repo'
         required: false
         type: string
-        default: 'https://github.com/LineageOS/android_kernel_nothing_sm8475.git'
+        default: 'https://github.com/arter97/android_kernel_nothing_sm8475.git'
       kernel_branch:
         description: 'Kernel branch'
         required: false
         type: string
-        default: 'lineage-23.2'
+        default: 'master'
       kernel_defconfig:
         description: 'Defconfig (relative to arch/arm64/configs/)'
         required: false
@@ -33,11 +33,11 @@ on:
       kernel_repo:
         required: false
         type: string
-        default: 'https://github.com/LineageOS/android_kernel_nothing_sm8475.git'
+        default: 'https://github.com/arter97/android_kernel_nothing_sm8475.git'
       kernel_branch:
         required: false
         type: string
-        default: 'lineage-23.2'
+        default: 'master'
       kernel_defconfig:
         required: false
         type: string
@@ -77,8 +77,8 @@ jobs:
       - name: Clone sources
         run: |
           # Kernel
-          git clone --depth=1 -b "${{ inputs.kernel_branch || 'lineage-23.2' }}" \
-            "${{ inputs.kernel_repo || 'https://github.com/LineageOS/android_kernel_nothing_sm8475.git' }}" \
+          git clone --depth=1 -b "${{ inputs.kernel_branch || 'master' }}" \
+            "${{ inputs.kernel_repo || 'https://github.com/arter97/android_kernel_nothing_sm8475.git' }}" \
             kernel
 
           # AnyKernel3
@@ -86,7 +86,7 @@ jobs:
           rm -rf AnyKernel3/.git
 
           # SUSFS
-          git clone --depth=1 -b gki-android13-5.10 \
+          git clone --depth=1 -b gki-android12-5.10 \
             https://gitlab.com/simonpunk/susfs4ksu.git
 
       - name: Setup ReSukiSU
@@ -103,7 +103,7 @@ jobs:
           cp ../susfs4ksu/kernel_patches/include/linux/* ./include/linux/
 
           # Apply kernel patch
-          patch -p1 < ../susfs4ksu/kernel_patches/50_add_susfs_in_gki-android13-5.10.patch
+          patch -p1 < ../susfs4ksu/kernel_patches/50_add_susfs_in_gki-android12-5.10.patch
 
           # Safety net: force susfs.o into the build regardless of Kconfig resolution.
           # The Configure step uses scripts/config to guarantee CONFIG_KSU_SUSFS=y,
