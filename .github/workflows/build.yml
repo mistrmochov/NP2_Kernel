@@ -126,6 +126,15 @@ jobs:
           # sed -i 's/obj-$(CONFIG_KSU_SUSFS) += susfs.o/obj-y += susfs.o/' fs/Makefile
           # grep -q 'susfs\.o' fs/Makefile || echo 'obj-y += susfs.o' >> fs/Makefile
 
+      - name: Add ReSukiSU patches
+        run: |
+          cd kernel
+          # Apply ReSukiSU patches
+          for patch in ../patches/*.patch; do
+            echo "Applying $patch"
+            patch -p1 < "$patch"
+          done
+
       - name: Configure kernel
         run: |
           cd kernel
