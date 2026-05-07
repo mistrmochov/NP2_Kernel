@@ -21,20 +21,7 @@ if [ "${KPM_SUPPORT}" = "true" ]; then
 fi
 
 if [ "${BBG_SUPPORT}" = "true" ]; then
-  if grep -q '^CONFIG_DEFAULT_SECURITY_SMACK=y' out/.config; then
-    LSM_LINE="CONFIG_LSM=lockdown,yama,loadpin,safesetid,integrity,smack,selinux,tomoyo,apparmor,bpf,baseband_guard"
-  elif grep -q '^CONFIG_DEFAULT_SECURITY_APPARMOR=y' out/.config; then
-    LSM_LINE="CONFIG_LSM=lockdown,yama,loadpin,safesetid,integrity,apparmor,selinux,smack,tomoyo,bpf,baseband_guard"
-  elif grep -q '^CONFIG_DEFAULT_SECURITY_TOMOYO=y' out/.config; then
-    LSM_LINE="CONFIG_LSM=lockdown,yama,loadpin,safesetid,integrity,tomoyo,bpf,baseband_guard"
-  elif grep -q '^CONFIG_DEFAULT_SECURITY_DAC=y' out/.config; then
-    LSM_LINE="CONFIG_LSM=lockdown,yama,loadpin,safesetid,integrity,bpf,baseband_guard"
-  else
-    LSM_LINE="CONFIG_LSM=lockdown,yama,loadpin,safesetid,integrity,selinux,smack,tomoyo,apparmor,bpf,baseband_guard"
-  fi
-
   echo "CONFIG_BBG=y" >> "${EXTRA_CFG}"
-  echo "${LSM_LINE}" >> "${EXTRA_CFG}"
 fi
 
 cat "${EXTRA_CFG}" >> out/.config
