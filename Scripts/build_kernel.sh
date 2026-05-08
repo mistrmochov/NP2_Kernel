@@ -85,6 +85,20 @@ if [ "${BBG_SUPPORT}" = "true" ]; then
 fi
 
 cat "${EXTRA_CFG}" >> out/.config
+
+if [ "${BBG_SUPPORT}" = "true" ]; then
+  if grep -q '^CONFIG_LSM=' out/.config; then
+    current_lsm=$(sed -n 's/^CONFIG_LSM="\(.*\)"/\1/p' out/.config | head -n1)
+    if [ -z "${current_lsm}" ]; then
+      sed -i 's/^CONFIG_LSM=.*/CONFIG_LSM="baseband_guard"/' out/.config
+    elif ! echo "${current_lsm}" | tr ',' '\n' | grep -qx 'baseband_guard'; then
+      sed -i "s/^CONFIG_LSM=.*/CONFIG_LSM=\"${current_lsm},baseband_guard\"/" out/.config
+    fi
+  else
+    echo 'CONFIG_LSM="selinux,bpf,baseband_guard"' >> out/.config
+  fi
+fi
+
 make ${MAKE_ARGS} olddefconfig
 [ -f scripts/setlocalversion ] && sed -i 's/-dirty//g' scripts/setlocalversion || true
 
