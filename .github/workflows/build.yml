@@ -172,7 +172,7 @@ jobs:
       - name: Setup ReSukiSU
         run: |
           cd "$KERNEL_DIR"
-          curl -LSs "https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/main/kernel/setup.sh" | bash
+          curl -LSs "https://raw.githubusercontent.com/pershoot/KernelSU-Next/dev-susfs/kernel/setup.sh" | bash -s dev-susfs
 
       - name: Apply extra patches
         if: ${{ inputs.extra_patches_dir != '' }}
