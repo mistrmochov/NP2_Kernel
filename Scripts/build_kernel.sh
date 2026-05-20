@@ -65,9 +65,19 @@ if [ "${#merge_frags[@]}" -gt 0 ]; then
   fi
 fi
 
+arter=false
+
+if [ -f version ]; then
+  if [ "$(cat version)" = "r45b2" ]; then
+    arter=true
+  fi
+fi
+
 EXTRA_CFG="out/ci-extra.config"
 : > "${EXTRA_CFG}"
-echo "CONFIG_KSU=y" >> "${EXTRA_CFG}"
+if [ $arter = false ]; then
+  echo "CONFIG_KSU=y" >> "${EXTRA_CFG}"
+fi
 
 if [ "${SUSFS_SUPPORT}" = "true" ]; then
   echo "CONFIG_KSU_SUSFS=y" >> "${EXTRA_CFG}"
@@ -88,6 +98,11 @@ cat "${EXTRA_CFG}" >> out/.config
 if [ -f version ]; then
   cp version out/version
 fi
+
+if [ $arter = true ]; then
+  ./scripts/config --file out/.config --disable CONFIG_KSU
+fi
+
 make ${MAKE_ARGS} olddefconfig
 [ -f scripts/setlocalversion ] && sed -i 's/-dirty//g' scripts/setlocalversion || true
 
