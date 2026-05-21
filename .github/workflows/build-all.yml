@@ -39,7 +39,7 @@ jobs:
     with:
       kernel_type: arter97
       kernel_repo: https://github.com/arter97/android_kernel_nothing_sm8475
-      kernel_branch: kernelsu
+      kernel_branch: master
       kernel_defconfig: /defconfig
       extra_configs: ''
       susfs_branch: gki-android13-5.10
