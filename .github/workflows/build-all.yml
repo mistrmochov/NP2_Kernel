@@ -43,8 +43,8 @@ jobs:
       kernel_defconfig: /defconfig
       extra_configs: ''
       susfs_branch: gki-android13-5.10
-      extra_patches_dir: ''
-      kpm_support: false
-      susfs_support: false
+      extra_patches_dir: patches/arter97
+      kpm_support: true
+      susfs_support: true
       susfs_force: false
       bbg_support: false

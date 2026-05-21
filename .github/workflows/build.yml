@@ -170,7 +170,6 @@ jobs:
             https://gitlab.com/simonpunk/susfs4ksu.git
 
       - name: Setup ReSukiSU
-        if: ${{ inputs.kernel_type != 'arter97' }}
         run: |
           cd "$KERNEL_DIR"
           curl -LSs "https://raw.githubusercontent.com/pershoot/KernelSU-Next/dev-susfs/kernel/setup.sh" | bash -s dev-susfs
