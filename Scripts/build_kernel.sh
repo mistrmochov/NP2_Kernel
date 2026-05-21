@@ -99,9 +99,9 @@ if [ -f version ]; then
   cp version out/version
 fi
 
-#if [ $arter = true ]; then
-#  ./scripts/config --file out/.config --disable CONFIG_KSU
-#fi
+if [ $arter = true ]; then
+  ./scripts/config --file out/.config --disable CONFIG_KSU
+fi
 
 make ${MAKE_ARGS} olddefconfig
 [ -f scripts/setlocalversion ] && sed -i 's/-dirty//g' scripts/setlocalversion || true
