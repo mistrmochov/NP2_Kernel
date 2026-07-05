@@ -1,6 +1,8 @@
 # Changelog
 > Updates not listed here are because there wasn't changes on the workflow, only updated upstream.
 
+## v3.0.5 - Switched to KernelSU-Next (July.5 2026)
+
 ## v3.0.4 - The ReSukiSU Improvement (May.1 2026)
 
 ### New
