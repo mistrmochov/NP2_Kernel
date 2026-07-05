@@ -3,23 +3,23 @@
 
 ## AnyKernel setup
 properties() { '
-kernel.string=NP2 Kernel - ReSukiSU
+kernel.string=NP2 Kernel - ReSukiSU by MiguVT
 do.devicecheck=1
 do.modules=0
-do.systemless=1
+do.systemless=0
 do.cleanup=1
 do.cleanuponabort=0
 device.name1=Pong
 device.name2=pong
-supported.versions=13-16
+supported.versions=13 - 16
 supported.patchlevels=
 '; }
 
 # Shell variables
-block=/dev/block/bootdevice/by-name/boot;
-is_slot_device=1;
-ramdisk_compression=auto;
-patch_vbmeta_flag=auto;
+BLOCK=boot;
+IS_SLOT_DEVICE=1;
+RAMDISK_COMPRESSION=auto;
+PATCH_VBMETA_FLAG=auto;
 
 ## AnyKernel methods
 . tools/ak3-core.sh;
