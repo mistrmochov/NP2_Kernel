@@ -188,10 +188,10 @@ jobs:
             exit 1
           fi
           cd "$KERNEL_DIR"
-          find "$patch_dir" -maxdepth 1 -type f \( -name '*.patch' -o -name '*.diff' \) -print0 | sort -z | while IFS= read -r patch; do
+          while IFS= read -r -d '' patch; do
             echo "Applying $patch"
             patch -p1 < "$patch"
-          done
+          done < <(find "$patch_dir" -maxdepth 1 -type f \( -name '*.patch' -o -name '*.diff' \) -print0 | sort -z)
 
       - name: Apply SUSFS patches
         if: ${{ inputs.susfs_support == true }}
