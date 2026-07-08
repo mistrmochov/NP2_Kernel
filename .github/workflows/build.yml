@@ -157,7 +157,7 @@ jobs:
           git clone --depth=1 -b "${{ inputs.susfs_branch || 'gki-android13-5.10' }}" \
             https://gitlab.com/simonpunk/susfs4ksu.git
 
-      - name: Setup ReSukiSU
+      - name: Setup KernelSU-Next
         run: |
           cd "$KERNEL_DIR"
           curl -LSs "https://raw.githubusercontent.com/nemamcasnashle/KernelSU-Next/dev-susfs/kernel/setup.sh" | bash -s dev-susfs
@@ -226,15 +226,15 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: kernel-${{ inputs.kernel_type || 'LineageOS' }}-NP2-ReSukiSU
-          path: "kernel-${{ inputs.kernel_type || 'LineageOS' }}-NP2-ReSukiSU.zip"
+          name: kernel-${{ inputs.kernel_type || 'LineageOS' }}-NP2-KSUN
+          path: "kernel-${{ inputs.kernel_type || 'LineageOS' }}-NP2-KSUN.zip"
           retention-days: 30
 
       - name: Upload .config for debugging
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: config-NP2-ReSukiSU
+          name: config-NP2-KSUN
           path: kernel/out/.config
           retention-days: 1
 
@@ -257,5 +257,5 @@ jobs:
         if: always() && steps.collect_rej.outputs.found == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: rej-NP2-ReSukiSU
+          name: rej-NP2-KSUN
           path: rej/

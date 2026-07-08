@@ -1,6 +1,8 @@
 # Changelog
 
-## v3.0.5 - The architecture update (Jul.1 2026)
+## v3.0.5-1 - Upstream sync
+
+## v3.0.5 - The architecture update, Switched to KernelSU-Next (Jul.1 2026)
 
 ## New
 - Better build all system on the workflow
