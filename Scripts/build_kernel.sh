@@ -78,6 +78,9 @@ if [ "${BBG_SUPPORT}" = "true" ]; then
 fi
 
 cat "${EXTRA_CFG}" >> out/.config
+if [ -f version ]; then
+  cp version out/version
+fi
 make ${MAKE_ARGS} olddefconfig
 [ -f scripts/setlocalversion ] && sed -i 's/-dirty//g' scripts/setlocalversion || true
 
