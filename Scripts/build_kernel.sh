@@ -73,6 +73,10 @@ if [ "${SUSFS_SUPPORT}" = "true" ]; then
   echo "CONFIG_KSU_SUSFS=y" >> "${EXTRA_CFG}"
 fi
 
+echo "CONFIG_KALLSYMS=y" >> "${EXTRA_CFG}"
+echo "CONFIG_KALLSYMS_ALL=y" >> "${EXTRA_CFG}"
+echo "CONFIG_KPROBES=y" >> "${EXTRA_CFG}"
+
 if [ "${BBG_SUPPORT}" = "true" ]; then
   echo "CONFIG_BBG=y" >> "${EXTRA_CFG}"
 fi
