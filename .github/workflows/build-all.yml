@@ -20,6 +20,8 @@ jobs:
             susfs_support: true
             bbg_support: false
             susfs_force: false
+            droidspaces_support: true
+            extra_patches_dir: patches/droidspaces
             extra_configs: 'vendor/waipio_GKI.config vendor/nothing/waipio_GKI.config vendor/debugfs.config'
 
           # NothingOSS Build
@@ -30,9 +32,11 @@ jobs:
             kernel_defconfig: gki_defconfig
             extra_configs: vendor/waipio_GKI.config
             extra_patches_dir: ''
+            extra_patches_dir: patches/droidspaces
             susfs_support: true
             bbg_support: false
             susfs_force: false
+            droidspaces_support: true
 
           # arter97 Build
           - name: arter97
@@ -45,6 +49,7 @@ jobs:
             susfs_support: true
             bbg_support: false
             susfs_force: false
+            droidspaces_support: false
 
     uses: ./.github/workflows/build.yml
     with:

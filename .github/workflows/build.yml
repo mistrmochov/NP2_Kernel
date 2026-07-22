@@ -41,9 +41,14 @@ on:
         description: 'Extra patch directory (repo-local)'
         required: false
         type: string
-        default: ''
+        default: 'patches/droidspaces'
       bbg_support:
         description: 'Enable BBG support (Warning: May bootloop with ReSukiSU/SUSFS)'
+        required: false
+        type: boolean
+        default: true
+      droidspaces_support:
+        description: 'Enable Droidspaces support'
         required: false
         type: boolean
         default: true
@@ -88,11 +93,16 @@ on:
       extra_patches_dir:
         required: false
         type: string
-        default: ''
+        default: 'patches/droidspaces'
       bbg_support:
         required: false
         type: boolean
         default: false
+      droidspaces_support:
+        description: 'Enable Droidspaces support'
+        required: false
+        type: boolean
+        default: true
       susfs_force:
         required: false
         type: boolean
@@ -234,6 +244,7 @@ jobs:
         run: |
           SUSFS_SUPPORT="${{ inputs.susfs_support }}" \
           BBG_SUPPORT="${{ inputs.bbg_support }}" \
+          DROIDSPACES_SUPPORT="${{ inputs.droidspaces_support }}" \
           Scripts/build_kernel.sh
 
       - name: CCache Stats
