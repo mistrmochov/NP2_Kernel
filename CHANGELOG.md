@@ -1,5 +1,7 @@
 # Changelog
 
+## v3.0.5-2 - Implemented Droidspaces support!
+
 ## v3.0.5-1 - Upstream sync
 
 ## v3.0.5 - The architecture update, Switched to KernelSU-Next (Jul.1 2026)
