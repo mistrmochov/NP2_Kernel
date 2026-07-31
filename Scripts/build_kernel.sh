@@ -3,6 +3,8 @@ set -euo pipefail
 
 cd "${KERNEL_DIR}"
 
+export LOCALVERSION="-meow"
+
 defconfig_targets=()
 defconfig_paths=()
 if [ -n "${DEFCONFIG:-}" ]; then
