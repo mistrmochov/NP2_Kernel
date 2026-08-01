@@ -1,5 +1,7 @@
 # Changelog
 
+## v3.0.5-3 - Add "-meow" to kernel version, switch susfs4ksu repo temporarily!
+
 ## v3.0.5-2 - Implemented Droidspaces support!
 
 ## v3.0.5-1 - Upstream sync
