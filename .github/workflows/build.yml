@@ -182,7 +182,7 @@ jobs:
         if: ${{ inputs.susfs_support == true }}
         run: |
           git clone --depth=1 -b "${{ inputs.susfs_branch || 'gki-android13-5.10' }}" \
-            https://gitlab.com/simonpunk/susfs4ksu.git
+            https://gitlab.com/mistrmochov/susfs4ksu.git
 
       - name: Setup KernelSU-Next
         run: |
