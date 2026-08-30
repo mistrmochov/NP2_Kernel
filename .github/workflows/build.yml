@@ -46,7 +46,7 @@ on:
         description: 'Enable BBG support (Warning: May bootloop with ReSukiSU/SUSFS)'
         required: false
         type: boolean
-        default: false
+        default: true
       susfs_force:
         description: 'Force SUSFS patch apply (ignore failures)'
         required: false
