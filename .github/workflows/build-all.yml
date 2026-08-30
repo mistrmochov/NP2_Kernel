@@ -18,7 +18,7 @@ jobs:
             kernel_type: LineageOS
 
             susfs_support: true
-            bbg_support: true
+            bbg_support: false
             susfs_force: false
 
           # NothingOSS Build
@@ -31,7 +31,7 @@ jobs:
             susfs_branch: gki-android13-5.10
 
             susfs_support: true
-            bbg_support: true
+            bbg_support: false
             susfs_force: false
 
           # arter97 Build
