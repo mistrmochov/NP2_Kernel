@@ -11,7 +11,7 @@ do.cleanup=1
 do.cleanuponabort=0
 device.name1=Pong
 device.name2=pong
-supported.versions=13 - 16
+supported.versions=13 - 17
 supported.patchlevels=
 '; }
 
