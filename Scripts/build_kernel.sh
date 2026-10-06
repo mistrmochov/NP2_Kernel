@@ -48,6 +48,11 @@ if [ -n "${DEFCONFIG_FRAGS:-}" ]; then
   done
 fi
 
+if [ -n "${MAKE_ENV:-}" ]; then
+  if ! [ "$MAKE_ENV" = "" ]; then
+    export $MAKE_ENV
+  fi
+fi
 make ${MAKE_ARGS} "${defconfig_targets[0]}"
 
 merge_frags=()
